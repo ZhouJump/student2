@@ -172,5 +172,9 @@ int mainmenu()//主菜单界面
 		}
 		SetPos(1, 17);
 	}
+	
+
 	return code;
 }
+
+void search();

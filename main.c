@@ -15,7 +15,7 @@ int main()
 	printbox(2,3,10,6);
 	SetPos(1, 17);
 
-	int code;
+	int code = 1;
 	struct Score//一个结构体
 	{
 		char num[12];  	//学号 
@@ -26,10 +26,15 @@ int main()
 		int sum; //三科成绩总分
 	}stu[100];
 
-
-	code = mainmenu();
 	
 
+	while (code != 8)
+	{
+     
+		code = mainmenu();//1查询 2录入 3编辑 4统计 5显示 6存取 7关于 8退出
 
-	return 0;
+	}
+	
+
+    return 0;
 }

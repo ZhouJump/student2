@@ -67,3 +67,5 @@ void printspace(int x, int y, int a, int b)//打印个框，xy锚点坐标，ab�
 	printf("  ");
 
 }
+
+
