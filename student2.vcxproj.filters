@@ -19,15 +19,4 @@
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="printmenu.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="winsystem.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="project.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-  </ItemGroup>
 </Project>
