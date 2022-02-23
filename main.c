@@ -1,6 +1,7 @@
 #include<stdio.h>
 #include<windows.h>
 #include<string.h>
+int count = 1;
 
 void  SetPos(int  x, int  y)//设置光标位置
 {
@@ -431,6 +432,12 @@ void search()
 
 }
 
+void LuRu2()
+{
+
+
+}
+
 void LuRu()
 {
 	system("cls");
@@ -459,10 +466,10 @@ void LuRu()
 			printspace(9, 11, 20, 3);
 			break;
 		case 6:
-			printspace(9, 7, 10, 3);
+			printspace(2, 13, 14, 3);
 			break;
 		case 7:
-			printspace(9, 7, 20, 3);
+			printspace(16, 13, 14, 3);
 			break;
 		default:
 			break;
@@ -470,27 +477,15 @@ void LuRu()
 		SetPos(1, 17);
 		switch (ch)
 		{
-		case 75://left
-			if (code == 6)
-				code = 7;
-			if (code == 7)
-				code = 6;
-			break;
-		case 77://right
-			if (code == 6)
-				code = 7;
-			if (code == 7)
-				code = 6;
-			break;
-		case 72://up
+        case 72://up
 			if (code == 1)
-				code = 6;
+				code = 7;
 			else
 				code -= 1;
 			break;
 		case 80://down
-			if (code >= 7)
-				code == 8;
+			if (code == 7)
+				code == 1;
 			else
 				code += 1;
 			break;
@@ -516,10 +511,10 @@ void LuRu()
 			printbox(9, 11, 20, 3);
 			break;
 		case 6:
-			printbox(9, 13, 10, 3);
+			printbox(2, 13, 14, 3);
 			break;
 		case 7:
-			printbox(16, 13, 10, 3);
+			printbox(16, 13, 14, 3);
 			break;
 		default:
 			break;
