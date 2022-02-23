@@ -1,7 +1,7 @@
 ﻿#include<stdio.h>
 #include<windows.h>
 #include<string.h>
-int count = 1;
+int count = 0,number = 0;
 char keyword[20];
 
 struct Score//一个结构体
@@ -64,7 +64,7 @@ void printmenu(int no)//打印标题
 		printf("  |======|     ||___| |     |\\US   |     | EXIT |\n");
 		printf("  |======|     |      |     |\\\\ :) |     |  -→ |\n");
 		printf("  |______|     |______|     |_\\\\___|     |______|\n");
-		printf("   5.显示       6.存取       7.关于       8.退出\n");
+		printf("   5.显示       6.保存       7.关于       8.退出\n");
 		printf(" -------------------------------------------------\n  [选择] 数字或方向键    [确定] 回车\n");
 		break;
 	case 2://密码界面
@@ -124,6 +124,40 @@ void printmenu(int no)//打印标题
 		printf("\n");
 		printf("\n");
 		printf(" -------------------------------------------------\n  [确定] 回车\n");
+		break;
+	case 6://编辑菜单
+		printf("  [学生成绩编辑]\n --------------------------------------------------\n");
+		printf("\n   姓名：");
+		printf("\n");
+		printf("\n   学号：");
+		printf("\n");
+		printf("\n  C成绩：");
+		printf("\n");
+		printf("\n   数学：");
+		printf("\n");
+		printf("\n   英语：");
+		printf("\n");
+		printf("\n   保存并退出");
+		printf("\n");
+		printf("\n");
+		printf(" -------------------------------------------------\n  [选择] 方向键    [确定] 回车\n");
+		break;
+	case 7://查询菜单
+		printf("  [学生成绩统计]\n -------------------------------------------------\n");
+		printf("\n");
+		printf("          最高分        姓名\n");
+		printf("\n");
+		printf("  C成绩\n");
+		printf("\n");
+		printf("  数学\n");
+		printf("\n");
+		printf("  英语\n");
+		printf("\n");
+		printf("  总分\n");
+		printf("\n");
+		printf("\n");
+		printf("\n");
+		printf(" -------------------------------------------------\n  [退出] 回车\n");
 		break;
 
 	default:
@@ -335,6 +369,131 @@ int mainmenu()//主菜单界面
 	return code;
 }
 
+int edit2(int code,int num)
+{
+	switch (code)
+	{
+	case 1:
+		SetPos(9, 3);
+		gets(stu[100].name);
+		return 0;
+	case 2:
+		SetPos(9, 5);
+		scanf_s("%d", &stu[100].num);
+		return 0;
+	case 3:
+		SetPos(9, 7);
+		scanf_s("%d", &stu[100].cpp);
+		return 0;
+	case 4:
+		SetPos(9, 9);
+		scanf_s("%d", &stu[100].math);
+		return 0;
+	case 5:
+		SetPos(9, 11);
+		scanf_s("%d", &stu[100].english);
+		return 0;
+	case 6:
+		strcpy_s(stu[count].name, strlen(stu[100].name) + 1, stu[100].name);
+		stu[num].num = stu[100].num;
+		stu[num].cpp = stu[100].cpp;
+		stu[num].math = stu[100].math;
+		stu[num].english = stu[100].english;
+		stu[num].sum = stu[100].cpp + stu[100].math + stu[100].english;
+		return 1;
+	default:
+		break;
+	}
+}
+
+void edit(int num)
+{
+	system("cls");
+	printmenu(6);
+	SetPos(9, 3);puts(stu[num].name);
+	SetPos(9, 5); printf("%d",stu[num].num);
+	SetPos(9, 7); printf("%d",stu[num].cpp);
+	SetPos(9, 9); printf("%d",stu[num].math);
+	SetPos(9, 11); printf("%d",stu[num].english);
+	printbox(9, 3, 20, 3);
+	SetPos(1, 17);
+	int code = 1, ch, check = 0;//code指功能代码 
+	while (check == 0)//用方向键选择功能
+	{
+		ch = getch();
+		switch (code)//抹掉框框
+		{
+		case 1:
+			printspace(9, 3, 20, 3);
+			break;
+		case 2:
+			printspace(9, 5, 20, 3);
+			break;
+		case 3:
+			printspace(9, 7, 20, 3);
+			break;
+		case 4:
+			printspace(9, 9, 20, 3);
+			break;
+		case 5:
+			printspace(9, 11, 20, 3);
+			break;
+		case 6:
+			printspace(2, 13, 14, 3);
+			break;
+		default:
+			break;
+		}
+		SetPos(1, 17);
+		switch (ch)
+		{
+		case 72://up
+			if (code == 1)
+				code = 6;
+			else
+				code -= 1;
+			break;
+		case 80://down
+			if (code == 6)
+				code = 1;
+			else
+				code += 1;
+			break;
+		
+		case 13:
+			check = edit2(code,num);
+		default:
+			break;
+		}
+
+		switch (code)//打印框框
+		{
+		case 1:
+			printbox(9, 3, 20, 3);
+			break;
+		case 2:
+			printbox(9, 5, 20, 3);
+			break;
+		case 3:
+			printbox(9, 7, 20, 3);
+			break;
+		case 4:
+			printbox(9, 9, 20, 3);
+			break;
+		case 5:
+			printbox(9, 11, 20, 3);
+			break;
+		case 6:
+			printbox(2, 13, 14, 3);
+			break;
+		default:
+			break;
+		}
+		SetPos(1, 17);
+
+	}
+}
+
 int search2(int code)
 {
 	int num = 0;
@@ -348,11 +507,20 @@ int search2(int code)
 		gets(keyword);
 		return 0;
 	case 2:
-		if (keyword[0] >= '0' && keyword[0] <= '9')
-			num = atoi(keyword);
+		if (atoi(keyword) != 0)
+		{
+			while (num  <= count || comper == 0)
+			{
+				if (atoi(keyword) == stu[num].num)
+					comper = 0;
+				else
+					num += 1;
+			}		
+		}
 		else
 		{
-			while (comper)
+			num = 0;
+			while (num <= count || comper ==  0)
 			{
 				if (strcmp(keyword, stu[num].name) == 0)
 				    comper = 0;
@@ -360,19 +528,30 @@ int search2(int code)
 				    num += 1;
 			}
 		}
-		SetPos(9, 6); printf("                ");
-		SetPos(9, 8); printf("                ");
-		SetPos(9, 10); printf("                ");
-		SetPos(9, 12); printf("                ");
-		SetPos(9, 14); printf("                ");
-		SetPos(9, 6);puts(stu[num].name);
-		SetPos(9, 8);printf("%d",stu[num].num);
-		SetPos(9, 10);printf("%d",stu[num].cpp);
-		SetPos(9, 12);printf("%d", stu[num].math);
-		SetPos(9, 14);printf("%d", stu[num].english);
-		SetPos(27, 14); printf("%d", stu[num].sum);
+		if (num > count)
+		{
+			SetPos(9, 6); printf("                ");
+			SetPos(9, 6); printf("这个人并不存在");
+		}
+		else
+		{
+			SetPos(9, 6); printf("                ");
+			SetPos(9, 8); printf("                ");
+			SetPos(9, 10); printf("                ");
+			SetPos(9, 12); printf("                ");
+			SetPos(9, 14); printf("        ");
+			SetPos(25, 14); printf("        ");
+			SetPos(9, 6); puts(stu[num].name);
+			SetPos(9, 8); printf("%d", stu[num].num);
+			SetPos(9, 10); printf("%d", stu[num].cpp);
+			SetPos(9, 12); printf("%d", stu[num].math);
+			SetPos(9, 14); printf("%d", stu[num].english);
+			SetPos(25, 14); printf("%d", stu[num].sum);
+			number = num;
+		}	
 		return 0;
-
+	case 3:
+		edit(num);
 	default:
 		break;
 	}
@@ -463,7 +642,6 @@ void search()
 
 int LuRu2(int code)
 {
-	int num=0;
 	switch (code)
 	{
 	case 1:
@@ -487,27 +665,27 @@ int LuRu2(int code)
 		scanf_s("%d", &stu[100].english);
 		return 0;
 	case 6:
-		num = stu[100].num;
-		strcpy_s(stu[num].name, strlen(stu[100].name) + 1, stu[100].name);
-		stu[num].num = stu[100].num;
-		stu[num].cpp = stu[100].cpp;
-		stu[num].math = stu[100].math;
-		stu[num].english = stu[100].english;
-		stu[num].sum = stu[100].cpp + stu[100].math + stu[100].english;
+		strcpy_s(stu[count].name, strlen(stu[100].name) + 1, stu[100].name);
+		stu[count].num = stu[100].num;
+		stu[count].cpp = stu[100].cpp;
+		stu[count].math = stu[100].math;
+		stu[count].english = stu[100].english;
+		stu[count].sum = stu[100].cpp + stu[100].math + stu[100].english;
 		SetPos(9, 3); printf("                ");
 		SetPos(9, 5); printf("                ");
 		SetPos(9, 7); printf("                ");
 		SetPos(9, 9); printf("                ");
 		SetPos(9, 11); printf("                ");
+		count += 1;
 		return 0;
 	case 7:
-		num = stu[100].num;
-		strcpy_s(stu[num].name,strlen(stu[100].name)+1,stu[100].name);
-		stu[num].num = stu[100].num;
-		stu[num].cpp = stu[100].cpp;
-		stu[num].math = stu[100].math;
-		stu[num].english = stu[100].english;
-		stu[num].sum = stu[100].cpp + stu[100].math + stu[100].english;
+		strcpy_s(stu[count].name, strlen(stu[100].name) + 1, stu[100].name);
+		stu[count].num = stu[100].num;
+		stu[count].cpp = stu[100].cpp;
+		stu[count].math = stu[100].math;
+		stu[count].english = stu[100].english;
+		stu[count].sum = stu[100].cpp + stu[100].math + stu[100].english;
+		count += 1;
 		return 1;
 	default:
 		break;
@@ -618,6 +796,37 @@ void LuRu()
 	
 }
 
+void countall()
+{
+	int cppmax = 0, mathmax = 0, englishmax = 0, summax = 0;
+	int coun = 0;
+	while (coun <= count)
+	{
+		if (stu[coun].cpp >= stu[cppmax].cpp)
+			cppmax = coun;
+		if (stu[coun].math >= stu[mathmax].math)
+			mathmax = coun;
+		if (stu[coun].english >= stu[englishmax].english)
+			englishmax = coun;
+		if (stu[coun].sum >= stu[summax].sum)
+			summax = coun;
+		coun += 1;
+	}
+	printmenu(7);
+	SetPos(11, 5); printf("%d", stu[cppmax].cpp);
+	SetPos(11, 7); printf("%d", stu[mathmax].math);
+	SetPos(11, 9); printf("%d", stu[englishmax].english);
+	SetPos(11, 11); printf("%d", stu[summax].sum);
+	SetPos(25, 5); puts(stu[cppmax].name);
+	SetPos(25, 7); puts(stu[mathmax].name);
+	SetPos(25, 9); puts(stu[englishmax].name);
+	SetPos(25, 11); puts(stu[summax].name);
+
+
+	getch();
+
+}
+
 int main()
 {
 	system("mode con cols=51 lines=18");
@@ -626,17 +835,12 @@ int main()
 	printmenu(5);
 	getch();
 	password();
-	
-
 	int code = 1;
-	
-
-	
-
 	while (code != 8)
 	{
      
 		code = mainmenu();//1查询 2录入 3编辑 4统计 5显示 6存取 7关于 8退出
+
 		switch (code)
 		{
 		case 1:
@@ -645,7 +849,11 @@ int main()
 		case 2:
 			LuRu();
 			break;
-		
+		case 3:
+			edit(number);
+			break;
+		case 4:
+			countall();
 		default:
 			break;
 		}
