@@ -3,6 +3,16 @@
 #include<string.h>
 int count = 1;
 
+struct Score//一个结构体
+{
+	char num[12];  	//学号 
+	char name[10];  //姓名 
+	int cpp;		//C成绩 
+	int math;		//高数成绩 
+	int english;		//英语成绩 
+	int sum; //三科成绩总分
+}stu[100];
+
 void  SetPos(int  x, int  y)//设置光标位置
 {
 
@@ -432,9 +442,36 @@ void search()
 
 }
 
-void LuRu2()
+int LuRu2(int code)
 {
-
+	switch (code)
+	{
+	case 1:
+		SetPos(9, 3);
+		gets(stu[count].name);
+		return 0;
+	case 2:
+		SetPos(9, 5);
+		gets(stu[count].num);
+		return 0;
+	case 3:
+		SetPos(9,7);
+		scanf_s("%d",&stu[count].cpp);
+		return 0;
+	case 4:
+		SetPos(9, 9);
+		scanf_s("%d", &stu[count].math);
+		return 0;
+	case 5:
+		SetPos(9, 11);
+		scanf_s("%d", &stu[count].math);
+		return 0;
+	case 7:
+		return 1;
+		break;
+	default:
+		break;
+	}
 
 }
 
@@ -485,10 +522,12 @@ void LuRu()
 			break;
 		case 80://down
 			if (code == 7)
-				code == 1;
+				code = 1;
 			else
 				code += 1;
 			break;
+		case 13:
+			check = LuRu2(code);
 		default:
 			break;
 		}
@@ -520,6 +559,7 @@ void LuRu()
 			break;
 		}
 		SetPos(1, 17);
+		
 	}
 	
 }
@@ -535,15 +575,7 @@ int main()
 	
 
 	int code = 1;
-	struct Score//一个结构体
-	{
-		char num[12];  	//学号 
-		char name[10];  //姓名 
-		int cpp;		//C成绩 
-		int math;		//高数成绩 
-		int english;		//英语成绩 
-		int sum; //三科成绩总分
-	}stu[100];
+	
 
 	
 
