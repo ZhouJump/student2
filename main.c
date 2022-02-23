@@ -80,7 +80,7 @@ void printmenu(int no)//打印标题
 		printf(" -------------------------------------------------\n  [选择] 数字或方向键    [确定] 回车\n");
 		break;
 	case 4://录入菜单
-		printf("  [学生成绩录入]\n ---------------------------------------------------\n");
+		printf("  [学生成绩录入]\n --------------------------------------------------\n");
 		printf("\n   姓名：");
 		printf("\n");
 		printf("\n   学号：");
@@ -95,6 +95,23 @@ void printmenu(int no)//打印标题
 		printf("\n");
 		printf("\n");
 		printf(" -------------------------------------------------\n  [选择] 数字或方向键    [确定] 回车\n");
+		break;
+	case 5://欢迎界面
+		printf("  [学生成绩管理系统]\n ---------------------------------------------------\n");
+		printf("\n");
+		printf("\n\t\t###############");
+		printf("\n\t\t# 学 生 成 绩 #");
+		printf("\n\t\t# 管 理 系 统 #");
+		printf("\n\t\t###############");
+		printf("\n");
+		printf("\n");
+		printf("\n");
+		printf("\n");
+		printf("\n");
+		printf("\n");
+		printf("\n");
+		printf("\n");
+		printf(" -------------------------------------------------\n  [确定] 回车\n");
 		break;
 
 	default:
@@ -133,7 +150,7 @@ void printspace(int x, int y, int a, int b)//打印个框，xy锚点坐标，ab框的长宽
 
 void password()//密码确认
 {
-	int password = 88888888;//密码
+	int password = 02;//密码
 	int scan = 0;
 	while (1)
 	{
@@ -418,17 +435,107 @@ void LuRu()
 {
 	system("cls");
 	printmenu(4);
-	printbox(2, 3, 10, 6);
+	printbox(9, 3, 20, 3);
 	SetPos(1, 17);
-	system("pause");
+	int code = 1, ch, check = 0;//code指功能代码 
+	while (check == 0)//用方向键选择功能
+	{
+		ch = getch();
+		switch (code)//抹掉框框
+		{
+		case 1:
+			printspace(9, 3, 20, 3);
+			break;
+		case 2:
+			printspace(9, 5, 20, 3);
+			break;
+		case 3:
+			printspace(9, 7, 20, 3);
+			break;
+		case 4:
+			printspace(9, 9, 20, 3);
+			break;
+		case 5:
+			printspace(9, 11, 20, 3);
+			break;
+		case 6:
+			printspace(9, 7, 10, 3);
+			break;
+		case 7:
+			printspace(9, 7, 20, 3);
+			break;
+		default:
+			break;
+		}
+		SetPos(1, 17);
+		switch (ch)
+		{
+		case 75://left
+			if (code == 6)
+				code = 7;
+			if (code == 7)
+				code = 6;
+			break;
+		case 77://right
+			if (code == 6)
+				code = 7;
+			if (code == 7)
+				code = 6;
+			break;
+		case 72://up
+			if (code == 1)
+				code = 6;
+			else
+				code -= 1;
+			break;
+		case 80://down
+			if (code >= 7)
+				code == 8;
+			else
+				code += 1;
+			break;
+		default:
+			break;
+		}
+
+		switch (code)//打印框框
+		{
+		case 1:
+			printbox(9, 3, 20, 3);
+			break;
+		case 2:
+			printbox(9, 5, 20, 3);
+			break;
+		case 3:
+			printbox(9, 7, 20, 3);
+			break;
+		case 4:
+			printbox(9, 9, 20, 3);
+			break;
+		case 5:
+			printbox(9, 11, 20, 3);
+			break;
+		case 6:
+			printbox(9, 13, 10, 3);
+			break;
+		case 7:
+			printbox(16, 13, 10, 3);
+			break;
+		default:
+			break;
+		}
+		SetPos(1, 17);
+	}
+	
 }
 
 int main()
 {
-	
 	system("mode con cols=51 lines=18");
 	system("color 71");
 	system("title 学生成绩管理系统");//以上改变窗口颜色 大小 标题
+	printmenu(5);
+	getch();
 	password();
 	
 
