@@ -64,7 +64,7 @@ void printmenu(int no)//打印标题
 		printf("  |======|     ||___| |     |\\US   |     | EXIT |\n");
 		printf("  |======|     |      |     |\\\\ :) |     |  -→ |\n");
 		printf("  |______|     |______|     |_\\\\___|     |______|\n");
-		printf("   5.显示       6.保存       7.关于       8.退出\n");
+		printf("   5.显示       6.存取       7.关于       8.退出\n");
 		printf(" -------------------------------------------------\n  [选择] 数字或方向键    [确定] 回车\n");
 		break;
 	case 2://密码界面
@@ -564,7 +564,9 @@ int search2(int code)
 		}	
 		return 0;
 	case 3:
-		edit(num);
+		edit(number);
+		printmenu(3);
+		return 0;
 	default:
 		break;
 	}
