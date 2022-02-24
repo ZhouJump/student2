@@ -12,7 +12,7 @@ struct Score//一个结构体
 	int math;		//高数成绩 
 	int english;		//英语成绩 
 	int sum; //三科成绩总分
-}stu[1001];
+}stu[10000001];
 
 void  SetPos(int  x, int  y)//设置光标位置
 {
@@ -64,7 +64,7 @@ void printmenu(int no)//打印标题
 		printf("  |======|     ||___| |     |\\US   |     | EXIT |\n");
 		printf("  |======|     |      |     |\\\\ :) |     |  -→ |\n");
 		printf("  |______|     |______|     |_\\\\___|     |______|\n");
-		printf("   5.显示       6.保存       7.关于       8.退出\n");
+		printf("   5.显示       6.存取       7.关于       8.退出\n");
 		printf(" -------------------------------------------------\n  [选择] 数字或方向键    [确定] 回车\n");
 		break;
 	case 2://密码界面
@@ -158,6 +158,23 @@ void printmenu(int no)//打印标题
 		printf("\n");
 		printf("\n");
 		printf(" -------------------------------------------------\n  [退出] 回车\n");
+		break;
+	case 8://文件读取
+		printf("  [学生成绩存取]\n -------------------------------------------------\n");
+		printf("    __________________   ____   ____\n");
+		printf("  |                    | 读取 | 写入 |\n");
+		printf("    ------------------   ----   ----\n");
+		printf("\n");
+		printf("  键入要操作的文件名\n");
+		printf("\n");
+		printf("\n");
+		printf("\n");
+		printf("\n");
+		printf("\n");
+		printf("\n");
+		printf("\n");
+		printf("\n");
+		printf(" -------------------------------------------------\n  [选择] 数字或方向键    [确定] 回车\n");
 		break;
 
 	default:
@@ -375,31 +392,31 @@ int edit2(int code,int num)
 	{
 	case 1:
 		SetPos(9, 3);
-		gets(stu[1000].name);
+		gets(stu[10000000].name);
 		return 0;
 	case 2:
 		SetPos(9, 5);
-		scanf_s("%d", &stu[1000].num);
+		scanf_s("%d", &stu[10000000].num);
 		return 0;
 	case 3:
 		SetPos(9, 7);
-		scanf_s("%d", &stu[1000].cpp);
+		scanf_s("%d", &stu[10000000].cpp);
 		return 0;
 	case 4:
 		SetPos(9, 9);
-		scanf_s("%d", &stu[1000].math);
+		scanf_s("%d", &stu[10000000].math);
 		return 0;
 	case 5:
 		SetPos(9, 11);
-		scanf_s("%d", &stu[1000].english);
+		scanf_s("%d", &stu[10000000].english);
 		return 0;
 	case 6:
-		strcpy_s(stu[count].name, strlen(stu[1000].name) + 1, stu[1000].name);
-		stu[num].num = stu[1000].num;
-		stu[num].cpp = stu[1000].cpp;
-		stu[num].math = stu[1000].math;
-		stu[num].english = stu[1000].english;
-		stu[num].sum = stu[1000].cpp + stu[1000].math + stu[1000].english;
+		strcpy_s(stu[count].name, strlen(stu[10000000].name) + 1, stu[10000000].name);
+		stu[num].num = stu[10000000].num;
+		stu[num].cpp = stu[10000000].cpp;
+		stu[num].math = stu[10000000].math;
+		stu[num].english = stu[10000000].english;
+		stu[num].sum = stu[10000000].cpp + stu[10000000].math + stu[10000000].english;
 		return 1;
 	default:
 		break;
@@ -510,10 +527,12 @@ int search2(int code)
 		if (atoi(keyword) != 0)
 		{
 			num = atoi(keyword);
+			if ( strlen(stu[num].name) == 0 )
+				num = 10000001;
 		}
 		else
 		{
-			while (comper ==  1 && num < 1000)
+			while (comper ==  1)
 			{
 				if (strcmp(keyword, stu[num].name) == 0)
 				    comper = 0;
@@ -522,7 +541,7 @@ int search2(int code)
 			}
 		}
 
-		if (num > count)
+		if (num > 10000000)
 		{
 			SetPos(9, 6); printf("                ");
 			SetPos(9, 6); printf("这个人并不存在");
@@ -641,33 +660,33 @@ int LuRu2(int code)
 	{
 	case 1:
 		SetPos(9, 3);
-		gets(stu[1000].name);
+		gets(stu[10000000].name);
 		return 0;
 	case 2:
 		SetPos(9, 5);
-		scanf_s("%d", &stu[1000].num);
+		scanf_s("%d", &stu[10000000].num);
 		return 0;
 	case 3:
 		SetPos(9,7);
-		scanf_s("%d",&stu[1000].cpp);
+		scanf_s("%d",&stu[10000000].cpp);
 		return 0;
 	case 4:
 		SetPos(9, 9);
-		scanf_s("%d", &stu[1000].math);
+		scanf_s("%d", &stu[10000000].math);
 		return 0;
 	case 5:
 		SetPos(9, 11);
-		scanf_s("%d", &stu[1000].english);
+		scanf_s("%d", &stu[10000000].english);
 		return 0;
 	case 6:
 		
-		num = stu[1000].num;
-		strcpy_s(stu[num].name, strlen(stu[1000].name) + 1, stu[1000].name);
-		stu[num].num = stu[1000].num;
-		stu[num].cpp = stu[1000].cpp;
-		stu[num].math = stu[1000].math;
-		stu[num].english = stu[1000].english;
-		stu[num].sum = stu[1000].cpp + stu[1000].math + stu[1000].english;
+		num = stu[10000000].num;
+		strcpy_s(stu[num].name, strlen(stu[10000000].name) + 1, stu[10000000].name);
+		stu[num].num = stu[10000000].num;
+		stu[num].cpp = stu[10000000].cpp;
+		stu[num].math = stu[10000000].math;
+		stu[num].english = stu[10000000].english;
+		stu[num].sum = stu[10000000].cpp + stu[10000000].math + stu[10000000].english;
 		SetPos(9, 3); printf("                ");
 		SetPos(9, 5); printf("                ");
 		SetPos(9, 7); printf("                ");
@@ -676,13 +695,13 @@ int LuRu2(int code)
 		count += 1;
 		return 0;
 	case 7:
-		num = stu[1000].num;
-		strcpy_s(stu[num].name, strlen(stu[1000].name) + 1, stu[1000].name);
-		stu[num].num = stu[1000].num;
-		stu[num].cpp = stu[1000].cpp;
-		stu[num].math = stu[1000].math;
-		stu[num].english = stu[1000].english;
-		stu[num].sum = stu[1000].cpp + stu[1000].math + stu[1000].english;
+		num = stu[10000000].num;
+		strcpy_s(stu[num].name, strlen(stu[10000000].name) + 1, stu[10000000].name);
+		stu[num].num = stu[10000000].num;
+		stu[num].cpp = stu[10000000].cpp;
+		stu[num].math = stu[10000000].math;
+		stu[num].english = stu[10000000].english;
+		stu[num].sum = stu[10000000].cpp + stu[10000000].math + stu[10000000].english;
 		count += 1;
 		return 1;
 	default:
@@ -798,7 +817,7 @@ void countall()
 {
 	int cppmax = 0, mathmax = 0, englishmax = 0, summax = 0;
 	int coun = 0;
-	while (coun <= count)
+	while (coun <= 10000000)
 	{
 		if (stu[coun].cpp >= stu[cppmax].cpp)
 			cppmax = coun;
@@ -823,6 +842,85 @@ void countall()
 
 	getch();
 
+}
+
+int filesave2(int code)
+{
+
+}
+
+void filesave()
+{
+	system("cls");
+	printmenu(8);
+	printbox(3, 3, 22, 3);
+	SetPos(1, 17);
+	int code = 1, ch, check = 0;//code指功能代码 
+	while (check == 0)//用方向键选择功能
+	{
+		ch = getch();
+		switch (code)//抹掉框框
+		{
+		case 1:
+			printspace(3, 3, 22, 3);
+			break;
+		case 2:
+			printspace(24, 3, 8, 3);
+			break;
+		case 3:
+			printspace(31, 3, 8, 3);
+			break;
+		default:
+			break;
+		}
+		SetPos(1, 17);
+		switch (ch)
+		{
+		case 75://left
+			if (code == 1)
+				code = 4;
+			code -= 1;
+			break;
+		case 77://right
+			if (code == 4)
+				code = 1;
+			code += 1;
+			break;
+		case 13:
+			check = filesave2(code);
+			break;
+		default:
+			break;
+		}
+
+		switch (code)//打印框框
+		{
+		case 1:
+			printbox(3, 3, 22, 3);
+			break;
+		case 2:
+			printbox(24, 3, 8, 3);
+			break;
+		case 3:
+			printbox(31, 3, 8, 3);
+			break;
+		default:
+			break;
+		}
+		SetPos(1, 17);
+
+	}
+	switch (code)
+	{
+	case 1:
+		break;
+	case 2:
+		break;
+	case 3:
+		break;
+	default:
+		break;
+	}
 }
 
 int main()
@@ -852,6 +950,10 @@ int main()
 			break;
 		case 4:
 			countall();
+			break;
+		case 6:
+			filesave();
+			break;
 		default:
 			break;
 		}
