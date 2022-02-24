@@ -2,7 +2,8 @@
 #include<windows.h>
 #include<string.h>
 int count = 0,number = 0;
-char keyword[20];
+char keyword[20],filename[20];
+FILE* fp = NULL;
 
 struct Score//一个结构体
 {
@@ -848,7 +849,27 @@ void countall()
 
 int filesave2(int code)
 {
+	switch (code)
+	{
+	case 1:
+		SetPos(3, 3); printf("               ");
+		SetPos(3, 3);
+		gets(filename);
+		return 0;
+	case 2://读取
+		if ((fp = fopen_s(filename, "r")) == NULL) {
 
+			printf("Fail to open file!\n");
+		}
+		break;
+	case 3://写入
+
+		break;
+	case 4:
+		return 1;
+	default:
+		break;
+	}
 }
 
 void filesave()
