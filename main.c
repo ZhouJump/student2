@@ -12,7 +12,7 @@ struct Score//一个结构体
 	int math;		//高数成绩 
 	int english;		//英语成绩 
 	int sum; //三科成绩总分
-}stu[101];
+}stu[1001];
 
 void  SetPos(int  x, int  y)//设置光标位置
 {
@@ -375,31 +375,31 @@ int edit2(int code,int num)
 	{
 	case 1:
 		SetPos(9, 3);
-		gets(stu[100].name);
+		gets(stu[1000].name);
 		return 0;
 	case 2:
 		SetPos(9, 5);
-		scanf_s("%d", &stu[100].num);
+		scanf_s("%d", &stu[1000].num);
 		return 0;
 	case 3:
 		SetPos(9, 7);
-		scanf_s("%d", &stu[100].cpp);
+		scanf_s("%d", &stu[1000].cpp);
 		return 0;
 	case 4:
 		SetPos(9, 9);
-		scanf_s("%d", &stu[100].math);
+		scanf_s("%d", &stu[1000].math);
 		return 0;
 	case 5:
 		SetPos(9, 11);
-		scanf_s("%d", &stu[100].english);
+		scanf_s("%d", &stu[1000].english);
 		return 0;
 	case 6:
-		strcpy_s(stu[count].name, strlen(stu[100].name) + 1, stu[100].name);
-		stu[num].num = stu[100].num;
-		stu[num].cpp = stu[100].cpp;
-		stu[num].math = stu[100].math;
-		stu[num].english = stu[100].english;
-		stu[num].sum = stu[100].cpp + stu[100].math + stu[100].english;
+		strcpy_s(stu[count].name, strlen(stu[1000].name) + 1, stu[1000].name);
+		stu[num].num = stu[1000].num;
+		stu[num].cpp = stu[1000].cpp;
+		stu[num].math = stu[1000].math;
+		stu[num].english = stu[1000].english;
+		stu[num].sum = stu[1000].cpp + stu[1000].math + stu[1000].english;
 		return 1;
 	default:
 		break;
@@ -509,18 +509,11 @@ int search2(int code)
 	case 2:
 		if (atoi(keyword) != 0)
 		{
-			while (num  <= count || comper == 0)
-			{
-				if (atoi(keyword) == stu[num].num)
-					comper = 0;
-				else
-					num += 1;
-			}		
+			num = atoi(keyword);
 		}
 		else
 		{
-			num = 0;
-			while (num <= count || comper ==  0)
+			while (comper ==  1 && num < 1000)
 			{
 				if (strcmp(keyword, stu[num].name) == 0)
 				    comper = 0;
@@ -528,6 +521,7 @@ int search2(int code)
 				    num += 1;
 			}
 		}
+
 		if (num > count)
 		{
 			SetPos(9, 6); printf("                ");
@@ -642,35 +636,38 @@ void search()
 
 int LuRu2(int code)
 {
+	int num;
 	switch (code)
 	{
 	case 1:
 		SetPos(9, 3);
-		gets(stu[100].name);
+		gets(stu[1000].name);
 		return 0;
 	case 2:
 		SetPos(9, 5);
-		scanf_s("%d", &stu[100].num);
+		scanf_s("%d", &stu[1000].num);
 		return 0;
 	case 3:
 		SetPos(9,7);
-		scanf_s("%d",&stu[100].cpp);
+		scanf_s("%d",&stu[1000].cpp);
 		return 0;
 	case 4:
 		SetPos(9, 9);
-		scanf_s("%d", &stu[100].math);
+		scanf_s("%d", &stu[1000].math);
 		return 0;
 	case 5:
 		SetPos(9, 11);
-		scanf_s("%d", &stu[100].english);
+		scanf_s("%d", &stu[1000].english);
 		return 0;
 	case 6:
-		strcpy_s(stu[count].name, strlen(stu[100].name) + 1, stu[100].name);
-		stu[count].num = stu[100].num;
-		stu[count].cpp = stu[100].cpp;
-		stu[count].math = stu[100].math;
-		stu[count].english = stu[100].english;
-		stu[count].sum = stu[100].cpp + stu[100].math + stu[100].english;
+		
+		num = stu[1000].num;
+		strcpy_s(stu[num].name, strlen(stu[1000].name) + 1, stu[1000].name);
+		stu[num].num = stu[1000].num;
+		stu[num].cpp = stu[1000].cpp;
+		stu[num].math = stu[1000].math;
+		stu[num].english = stu[1000].english;
+		stu[num].sum = stu[1000].cpp + stu[1000].math + stu[1000].english;
 		SetPos(9, 3); printf("                ");
 		SetPos(9, 5); printf("                ");
 		SetPos(9, 7); printf("                ");
@@ -679,12 +676,13 @@ int LuRu2(int code)
 		count += 1;
 		return 0;
 	case 7:
-		strcpy_s(stu[count].name, strlen(stu[100].name) + 1, stu[100].name);
-		stu[count].num = stu[100].num;
-		stu[count].cpp = stu[100].cpp;
-		stu[count].math = stu[100].math;
-		stu[count].english = stu[100].english;
-		stu[count].sum = stu[100].cpp + stu[100].math + stu[100].english;
+		num = stu[1000].num;
+		strcpy_s(stu[num].name, strlen(stu[1000].name) + 1, stu[1000].name);
+		stu[num].num = stu[1000].num;
+		stu[num].cpp = stu[1000].cpp;
+		stu[num].math = stu[1000].math;
+		stu[num].english = stu[1000].english;
+		stu[num].sum = stu[1000].cpp + stu[1000].math + stu[1000].english;
 		count += 1;
 		return 1;
 	default:
