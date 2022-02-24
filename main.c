@@ -857,10 +857,8 @@ int filesave2(int code)
 		gets(filename);
 		return 0;
 	case 2://读取
-		if ((fp = fopen_s(filename, "r")) == NULL) {
+		fopen_s(&fp, filename, "r");
 
-			printf("Fail to open file!\n");
-		}
 		break;
 	case 3://写入
 
