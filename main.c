@@ -64,7 +64,7 @@ void printmenu(int no)//打印标题
 		printf("  |======|     ||___| |     |\\US   |     | EXIT |\n");
 		printf("  |======|     |      |     |\\\\ :) |     |  -→ |\n");
 		printf("  |______|     |______|     |_\\\\___|     |______|\n");
-		printf("   5.显示       6.存取       7.关于       8.退出\n");
+		printf("   5.显示       6.保存       7.关于       8.退出\n");
 		printf(" -------------------------------------------------\n  [选择] 数字或方向键    [确定] 回车\n");
 		break;
 	case 2://密码界面
@@ -161,9 +161,9 @@ void printmenu(int no)//打印标题
 		break;
 	case 8://文件读取
 		printf("  [学生成绩存取]\n -------------------------------------------------\n");
-		printf("    __________________   ____   ____\n");
-		printf("  |                    | 读取 | 写入 |\n");
-		printf("    ------------------   ----   ----\n");
+		printf("    __________________   ____   ____       ____\n");
+		printf("  |                    | 读取 | 写入 |   | 退出 |\n");
+		printf("    ------------------   ----   ----       ----\n");
 		printf("\n");
 		printf("  键入要操作的文件名\n");
 		printf("\n");
@@ -870,6 +870,9 @@ void filesave()
 		case 3:
 			printspace(31, 3, 8, 3);
 			break;
+		case 4:
+			printspace(42, 3, 8, 3);
+			break;
 		default:
 			break;
 		}
@@ -887,7 +890,7 @@ void filesave()
 			code += 1;
 			break;
 		case 13:
-			check = filesave2(code);
+			check = search2(code);
 			break;
 		default:
 			break;
@@ -904,6 +907,10 @@ void filesave()
 		case 3:
 			printbox(31, 3, 8, 3);
 			break;
+		case 4:
+			printbox(42, 3, 8, 3);
+			break;
+
 		default:
 			break;
 		}
@@ -921,6 +928,8 @@ void filesave()
 	default:
 		break;
 	}
+
+
 }
 
 int main()
@@ -950,10 +959,6 @@ int main()
 			break;
 		case 4:
 			countall();
-			break;
-		case 6:
-			filesave();
-			break;
 		default:
 			break;
 		}
